@@ -1,0 +1,14 @@
+{
+  "name": "mini-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "", 
+  "dependencies": {},
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^3.3.0",
+    "web-component-tester": "^5.0.1"
+  },
+  "author": "",
+  "license": "MIT"
+}

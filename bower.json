@@ -1,0 +1,23 @@
+{
+  "name": "mini-form",
+  "authors": [
+    "Pearl Latteier <pearlbea@gmail.com>"
+  ],
+  "description": "Demo web component",
+  "main": "app/index.html",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "custom-elements": "webcomponents/custom-elements#^1.0.0-rc.4",
+    "shadydom": "webcomponents/shadydom#^1.0.0-rc.7",
+    "shadycss": "webcomponents/shadycss#^1.0.0-rc.5"
+  }
+}

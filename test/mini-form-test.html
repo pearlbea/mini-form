@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../bower_components/custom-elements/custom-elements.min.js"></script>
+  <script src="../bower_components/shadydom/shadydom.min.js"></script>
+  <script src="../bower_components/shadycss/apply-shim.min.js"></script>
+  <script src="../node_modules/web-component-tester/browser.js"></script>
+  <script src="../mini-form.js"></script>
+</head>
+<body>
+
+  <mini-form id="fixture">
+    <div id="question" slot="question">How are you?</div>
+  </mini-form>
+
+  <script>
+    suite('<mini-form>', function() {
+
+      let component = document.querySelector('mini-form');
+
+      test('renders button', function() {
+        assert.isDefined(component.shadowRoot.querySelector('button'));
+      });
+
+      test('renders input', function() {
+        assert.isDefined(component.shadowRoot.querySelector('input[type="text"]'));
+      });
+
+      test('renders question', function() {
+        let text = component.querySelector('#question').innerHTML;
+        assert.equal(text, 'How are you?');
+      });
+
+      test('submits answer on click', function() {
+        let component = document.querySelector('mini-form');
+
+      });
+    });
+  </script>
+</body>
+</html>
