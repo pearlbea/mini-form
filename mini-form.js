@@ -116,8 +116,8 @@ class MiniForm extends HTMLElement {
         </header>
         <div class="mdl-card__supporting-text">
           <h4><slot name="question"></slot></h4>
-          <div class="error hide">Please write your response.</div>
           <input type="text" rows="3" class="mdl-textfield__input" name="question" />
+          <div class="error hide">Please write your response.</div>
         </div>
         <div class="mdl-card__actions">
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit</button>
