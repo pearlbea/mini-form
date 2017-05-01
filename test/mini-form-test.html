@@ -10,32 +10,17 @@
 </head>
 <body>
 
-  <mini-form id="fixture">
-    <div id="question" slot="question">How are you?</div>
-  </mini-form>
+  <mini-form id="fixture">How are you?</mini-form>
 
   <script>
     suite('<mini-form>', function() {
 
       let component = document.querySelector('mini-form');
 
-      test('renders button', function() {
-        assert.isDefined(component.shadowRoot.querySelector('button'));
+      test('renders div', function() {
+        assert.isOk(component.querySelector('div'));
       });
 
-      test('renders input', function() {
-        assert.isDefined(component.shadowRoot.querySelector('input[type="text"]'));
-      });
-
-      test('renders question', function() {
-        let text = component.querySelector('#question').innerHTML;
-        assert.equal(text, 'How are you?');
-      });
-
-      test('submits answer on click', function() {
-        let component = document.querySelector('mini-form');
-
-      });
     });
   </script>
 </body>
