@@ -21,6 +21,14 @@
         assert.isOk(component.querySelector('div'));
       });
 
+      test('renders input', function() {
+        assert.isOk(component.querySelector('input[type="text"]'));
+      });
+
+      test('render button', function() {
+        assert.isOk(component.querySelector('button'));
+      });
+
     });
   </script>
 </body>
