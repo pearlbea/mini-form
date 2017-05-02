@@ -2,31 +2,69 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <script src="../bower_components/custom-elements/custom-elements.min.js"></script>
   <script src="../bower_components/shadydom/shadydom.min.js"></script>
-  <script src="../bower_components/shadycss/apply-shim.min.js"></script>
+  <script src="../bower_components/custom-elements/custom-elements.min.js"></script>
   <script src="../node_modules/web-component-tester/browser.js"></script>
   <script src="../mini-form.js"></script>
 </head>
 <body>
 
-  <mini-form id="fixture">How are you?</mini-form>
+  <test-fixture id="mini-form-fixture">
+    <mini-form theme="blue-green" id="fixture">What?!</mini-form>
+  </test-fixture>
 
   <script>
+
     suite('<mini-form>', function() {
 
       let component = document.querySelector('mini-form');
 
-      test('renders div', function() {
-        assert.isOk(component.querySelector('div'));
+      test('renders div', () => {
+        assert.isOk(component.shadowRoot.querySelector('div'));
       });
 
-      test('renders input', function() {
-        assert.isOk(component.querySelector('input[type="text"]'));
+      test('renders input', () => {
+        assert.isOk(component.shadowRoot.querySelector('input[type="text"]'));
       });
 
-      test('render button', function() {
-        assert.isOk(component.querySelector('button'));
+      test('render button', () => {
+        assert.isOk(component.shadowRoot.querySelector('button'));
+      });
+
+      test('renders question', () => {
+        let index = component.innerText.indexOf('What?!');
+        assert.isAtLeast(index, 0);
+      });
+
+      test('applies color theme', () => {
+        let button = component.shadowRoot.querySelector('button');
+        let buttonColor = window.getComputedStyle(button).getPropertyValue('background-color');
+        assert.equal(buttonColor, 'rgb(105, 240, 174)');
+      });
+
+      test('displays an error message on submit', () => {
+        let button = component.shadowRoot.querySelector('button');
+        let errorMsg = component.shadowRoot.querySelector('.error');
+        button.click();
+        let index = errorMsg.innerText.indexOf('Don\'t you have something to say?');
+        assert.isAtLeast(index, 0);
+      });
+
+      test('clears error message on focus', () => {
+        let input = component.shadowRoot.querySelector('input[type="text"]');
+        let errorMsg = component.shadowRoot.querySelector('.error');
+        input.focus();
+        let index = errorMsg.innerText.indexOf('Don\'t you have something to say?');
+        assert.isAtLeast(index, -1);
+      });
+
+      test('displays a success message on submit', () => {
+        let input = component.shadowRoot.querySelector('input[type="text"]');
+        let button = component.shadowRoot.querySelector('button');
+        input.value = 'Some text';
+        button.click();
+        let index = component.shadowRoot.querySelector('.mdl-card').innerText.indexOf('Thank you.');
+        assert.isAtLeast(index, 0);
       });
 
     });
