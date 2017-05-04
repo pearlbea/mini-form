@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <mini-form>What?!</mini-form>
+  <mini-form theme="blue-green">What?!</mini-form>
 
   <script>
 
@@ -33,6 +33,18 @@
         let index = component.innerText.indexOf('What?!');
         assert.isAtLeast(index, 0);
       });
+
+      test('applies color theme to button', () => {
+       let button = component.shadowRoot.querySelector('button');
+       let buttonColor = window.getComputedStyle(button).getPropertyValue('background-color');
+       assert.equal(buttonColor, 'rgb(105, 240, 174)');
+     });
+
+     test('applies color theme to header', () => {
+       let header = component.shadowRoot.querySelector('header');
+       let headerColor = window.getComputedStyle(header).getPropertyValue('background-color');
+       assert.equal(headerColor, 'rgb(33, 150, 243)');
+     });
 
     });
   </script>

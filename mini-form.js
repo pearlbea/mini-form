@@ -13,16 +13,15 @@ class MiniForm extends HTMLElement {
     shadowRoot.innerHTML = this.template;
   }
 
-  initShadowDom() {
-    let shadowRoot = this.attachShadow({mode: 'open'});
-    shadowRoot.innerHTML = this.template;
+  get theme() {
+    return this.getAttribute('theme') || 'indigo-pink';
   }
 
   get template() {
     return `
     <style>
       @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-      @import 'https://code.getmdl.io/1.3.0/material.indigo-pink.min.css';
+      @import 'https://code.getmdl.io/1.3.0/material.${this.theme}.min.css';
       @import 'http://fonts.googleapis.com/css?family=Roboto:300,400,500,700';
       .mdl-card {
         width: 100%;
