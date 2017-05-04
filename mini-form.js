@@ -13,11 +13,6 @@ class MiniForm extends HTMLElement {
     shadowRoot.innerHTML = this.template;
   }
 
-  initShadowDom() {
-    let shadowRoot = this.attachShadow({mode: 'open'});
-    shadowRoot.innerHTML = this.template;
-  }
-
   get template() {
     return `
     <style>
