@@ -16,6 +16,9 @@
     suite('<mini-form>', function() {
 
       let component = document.querySelector('mini-form');
+      let input = component.shadowRoot.querySelector('input[type="text"]');
+      let button = component.shadowRoot.querySelector('button');
+      let errorMsg = component.shadowRoot.querySelector('.error');
 
       test('renders div', () => {
         assert.isOk(component.shadowRoot.querySelector('div'));
@@ -35,7 +38,6 @@
       });
 
       test('applies color theme to button', () => {
-       let button = component.shadowRoot.querySelector('button');
        let buttonColor = window.getComputedStyle(button).getPropertyValue('background-color');
        assert.equal(buttonColor, 'rgb(105, 240, 174)');
      });
@@ -46,7 +48,26 @@
        assert.equal(headerColor, 'rgb(33, 150, 243)');
      });
 
+     test('displays an error message on submit', () => {
+      button.click();
+      let index = errorMsg.innerText.indexOf('Don\'t you have something to say?');
+      assert.isAtLeast(index, 0);
     });
+
+    test('clears error message on focus', () => {
+      input.focus();
+      let index = errorMsg.innerText.indexOf('Don\'t you have something to say?');
+      assert.isAtLeast(index, -1);
+    });
+
+    test('displays a success message on submit', () => {
+      input.value = 'Some text';
+      button.click();
+      let index = component.shadowRoot.querySelector('.mdl-card').innerText.indexOf('Thank you.');
+      assert.isAtLeast(index, 0);
+    });
+
+  });
   </script>
 </body>
 </html>
