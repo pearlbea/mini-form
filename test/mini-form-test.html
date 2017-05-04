@@ -9,9 +9,7 @@
 </head>
 <body>
 
-  <test-fixture id="mini-form-fixture">
-    <mini-form theme="blue-green" id="fixture">What?!</mini-form>
-  </test-fixture>
+  <mini-form>What?!</mini-form>
 
   <script>
 
@@ -33,37 +31,6 @@
 
       test('renders question', () => {
         let index = component.innerText.indexOf('What?!');
-        assert.isAtLeast(index, 0);
-      });
-
-      test('applies color theme', () => {
-        let button = component.shadowRoot.querySelector('button');
-        let buttonColor = window.getComputedStyle(button).getPropertyValue('background-color');
-        assert.equal(buttonColor, 'rgb(105, 240, 174)');
-      });
-
-      test('displays an error message on submit', () => {
-        let button = component.shadowRoot.querySelector('button');
-        let errorMsg = component.shadowRoot.querySelector('.error');
-        button.click();
-        let index = errorMsg.innerText.indexOf('Don\'t you have something to say?');
-        assert.isAtLeast(index, 0);
-      });
-
-      test('clears error message on focus', () => {
-        let input = component.shadowRoot.querySelector('input[type="text"]');
-        let errorMsg = component.shadowRoot.querySelector('.error');
-        input.focus();
-        let index = errorMsg.innerText.indexOf('Don\'t you have something to say?');
-        assert.isAtLeast(index, -1);
-      });
-
-      test('displays a success message on submit', () => {
-        let input = component.shadowRoot.querySelector('input[type="text"]');
-        let button = component.shadowRoot.querySelector('button');
-        input.value = 'Some text';
-        button.click();
-        let index = component.shadowRoot.querySelector('.mdl-card').innerText.indexOf('Thank you.');
         assert.isAtLeast(index, 0);
       });
 
