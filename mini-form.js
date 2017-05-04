@@ -116,7 +116,7 @@ class MiniForm extends HTMLElement {
         </header>
         <div class="mdl-card__supporting-text">
           <h4><slot></slot></h4>
-          <input type="text" rows="3" class="mdl-textfield__input" name="question" />
+          <input type="text" rows="3" class="mdl-textfield__input" name="prompt" />
           <div class="error hide">Don't you have something to say?</div>
         </div>
         <div class="mdl-card__actions">
