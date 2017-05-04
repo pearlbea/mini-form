@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <script src="../bower_components/custom-elements/custom-elements.min.js"></script>
   <script src="../bower_components/shadydom/shadydom.min.js"></script>
-  <script src="../bower_components/shadycss/apply-shim.min.js"></script>
   <script src="../node_modules/web-component-tester/browser.js"></script>
   <script src="../mini-form.js"></script>
 </head>
@@ -18,15 +17,15 @@
       let component = document.querySelector('mini-form');
 
       test('renders div', function() {
-        assert.isOk(component.querySelector('div'));
+        assert.isOk(component.shadowRoot.querySelector('div'));
       });
 
       test('renders input', function() {
-        assert.isOk(component.querySelector('input[type="text"]'));
+        assert.isOk(component.shadowRoot.querySelector('input[type="text"]'));
       });
 
       test('render button', function() {
-        assert.isOk(component.querySelector('button'));
+        assert.isOk(component.shadowRoot.querySelector('button'));
       });
 
     });
